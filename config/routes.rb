@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
-  resources :users
-  get 'login/signup'
+  root 'pages#home'
+  get '/login',		to: 'sessions#new'
 
-  get 'login/userlogin'
+  post '/login',	to:'sessions#create'
 
-  #get 'welcome/index'
+  get '/logout',	to: 'sessions#destroy'
+  #delete '/logout' => :destroy
+  get '/home',		to: 'pages#home'
+  get '/about',		to: 'pages#about'
+  get '/landing', 	to: 'pages#landingPage'
+  #get 'pages/home'
+
+  #get 'pages/about'
+
+  post '/signup', to: 'users#create'
+  get '/signup', 	to: 'users#new'
+  get '/users/:id', to: 'sessions#create'
+
+  #General catch all
   match ':controller(/:action(/:id))',  :via => :get
-  root 'welcome#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :users
 end

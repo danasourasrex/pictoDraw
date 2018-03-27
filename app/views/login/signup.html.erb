@@ -1,4 +1,6 @@
 <h1>Login#signup</h1>
 <p>Find me in app/views/login/signup.html.erb</p>
 
-<%= render 'form', controller: 'User', user: @user %>
+<%= render 'users/form', user: @user %>
+
+<%= link_to 'Back', users_path %>
