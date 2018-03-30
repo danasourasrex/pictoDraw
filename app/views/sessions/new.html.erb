@@ -1,0 +1,21 @@
+<br>
+<h1>Login</h1>
+<br>
+<div>
+<%=form_tag do%>
+<fieldset>
+	<legend>Please Log In</legend>
+	<div>
+	<%= label_tag :email, 'email' %>
+	<%= text_field_tag :email, params[:email] %>
+	<%= label_tag :password, 'password' %>
+	<%= password_field_tag :password, params[:password] %>
+</div>
+<div>
+<%= submit_tag "Login" %>
+</div>
+</fieldset>
+<% end %>
+</div>
+<h2><%= link_to 'Home', '/home' %></h2>
+<br>

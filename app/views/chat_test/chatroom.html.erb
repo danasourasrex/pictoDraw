@@ -1,0 +1,36 @@
+<br>
+<h1>ChatTest chatroom</h1>
+<p>Testing AJAX</p>
+
+<h2><%= link_to 'Home', '/landing'%> <h2>
+<%= render 'form', message: @message %>
+<button onclick="myFunction()">Try it</button>
+<div id = "AJAXtest">
+	<br>
+	<br>
+
+</div>
+
+<script>
+	loadDoc();
+	function loadDoc() {
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState = 4 && this.status == 200) {
+				document.getElementById("AJAXtest").innerHTML = this.responseText;
+			}
+		}
+
+		xhttp.open("GET", "/AJAXTEST", true);
+		xhttp.send();
+		//okay so this works but it is super duper ugly
+		
+		//sleep(1)
+	}
+	function myFunction() {
+    	setInterval(loadDoc, 3000);
+	}
+	//while(true) { loadDoc(); sleep(1); }
+	
+</script>

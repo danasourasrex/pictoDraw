@@ -1,0 +1,12 @@
+<%= form_with(model: Message, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_field :message, id: :user_message %>
+  </div>
+
+  <% params[:user] = session[:username]%>
+
+  <div class="actions">
+    <%# form.submit %>
+  </div>
+<% end %>

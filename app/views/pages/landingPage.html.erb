@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <br>
+    <% if session[:user_id] == nil%>
+      <h1>You need to Login</h1>
+      <h2><%= link_to 'Login', '/login' %></h2>
+      
+    <%else%>
+      <h1>You've logged in!</h1>
+      <br>
+      <h3>Session user ID</h3>
+      <%= session[:user_id]%>
+      <br>
+      <h3>Session Username</h3>
+      <%= session[:username]%>
+
+      <h2><%= link_to 'Logout', '/logout' %></h2>
+      <h2><%= link_to 'About', '/about' %></h2>
+      <h2><%= link_to 'Drawing Test', '/drawing_test/draw' %></h2>
+      <h2><%= link_to 'Chat Test', '/chatroomtest'%> <h2>
+      <%if session[:username] == "danasourasrex@gmail.com"%>
+        <h2><%= link_to 'Admin Page', '/users'%> <h2>
+      <% end %> 
+    <% end %>
+    
+  </body>
+</html>
+<br>

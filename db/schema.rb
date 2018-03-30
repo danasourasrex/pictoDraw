@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326221721) do
+ActiveRecord::Schema.define(version: 20180329234258) do
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "username"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "password"
-    t.string "email"
+    t.string "email", limit: 50, null: false
+    t.string "password", limit: 30, null: false
+    t.integer "gamesplayed", default: 0
+    t.integer "gameswon", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

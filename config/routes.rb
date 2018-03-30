@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  #get 'chat_test/chatroom'
+
+  #get 'drawing_test/draw'
+
+  resources :messages
   root 'pages#home'
+  get '/signup',  to: 'users#new'
+  post '/signup', to: 'users#create'
   get '/login',		to: 'sessions#new'
 
   post '/login',	to:'sessions#create'
@@ -10,11 +17,20 @@ Rails.application.routes.draw do
   get '/about',		to: 'pages#about'
   get '/landing', 	to: 'pages#landingPage'
   #get 'pages/home'
-
+  get '/users/show/id'
   #get 'pages/about'
 
-  post '/signup', to: 'users#create'
-  get '/signup', 	to: 'users#new'
+
+
+  #CHAT TEST
+  get '/chatroom', to: 'chat_test#chatroom'
+
+  get '/AJAXTEST', to: 'chat_test#chatbox'
+
+  #Drawing Test
+  get '/drawtest', to: 'drawing_test#draw'
+  
+  
   get '/users/:id', to: 'sessions#create'
 
   #General catch all
