@@ -1,16 +1,47 @@
-<br>
-<h1>ChatTest chatroom</h1>
-<p>Testing AJAX</p>
+<!DOCTYPE html>
 
-<h2><%= link_to 'Home', '/landing'%> <h2>
-<%= render 'form', message: @message %>
-<button onclick="myFunction()">Try it</button>
-<div id = "AJAXtest">
-	<br>
-	<br>
+<html>
+<nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">PicToDraw</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Logout', '/logout' %></li>
+          <li><%= link_to 'About', '/about' %></li>
+          <li><%= link_to 'Drawing Test', '/drawing_test/draw' %></li>
+          <li><%= link_to 'Chat Test', '/chatroom'%> </li>
+          
+          
+          <%if session[:username] == "danasourasrex@gmail.com"%>
+            <li><%= link_to 'Admin Page', '/users'%> </li>
+          <% end %> 
+        </ul>
+      </div>
+  </nav>
+	<body>
+		<h1>Chat Test</h1>
+		
+		
+		
 
-</div>
+		<div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Chatroom</span>
+            <div id = "AJAXtest" style="overflow:scroll; height:200px;">
 
+			</div>
+          </div>
+        <div class="card-action">
+        	<%= render 'form', message: @message %>
+        	<button onclick="myFunction()">This activates AJAX</button>
+        	<button onclick="cleartext()">Clear</button>
+        </div>
+       </div>
+      </div>
+     </div>
+	</body>
+</html>
 <script>
 	loadDoc();
 	function loadDoc() {
@@ -32,5 +63,10 @@
     	setInterval(loadDoc, 3000);
 	}
 	//while(true) { loadDoc(); sleep(1); }
+
+	function cleartext()
+	{
+	document.getElementById("textchat").value="";
+	}
 	
 </script>

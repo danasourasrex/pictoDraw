@@ -2,40 +2,4 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-html{
-	background: #add0ff;
-}
-
-body{
-	background: #ffd2b2;
-}
-h1{
-	font-family: helvetica;
-	font-weight: lighter;
-	font-size:50px;
-	text-align: center;
-}
-h2{
-	font-family: helvetica;
-	font-weight:lighter;
-	font-size:20px;
-	text-align: center;
-
-}
-a.hover{
-	background-color: #ffc430;
-}
-
-.AboutText{
-	padding-left: 40px;
-	padding-right: 40px;
-
-}
-.AboutText p{
-	font-family: helvetica;
-	font-weight:lighter;
-	text-align: justify;
-	background: #ffd2b2;
-
-}
+@import "materialize";
