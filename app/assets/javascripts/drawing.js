@@ -1,3 +1,4 @@
+
 $(function(){
   //vars that should be globally accessed, the document, the canvas, and the canvas context.
   document.getElementById('paper').width = 600;

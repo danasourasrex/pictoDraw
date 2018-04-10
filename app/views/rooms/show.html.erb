@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
+
+
 <head>
-<% javascript_include_tag 'drawing.js' %>
+
 <% javascript_include_tag 'liveline.js' %>
 </head>
 <%= render 'pages/navbar', controller: :pages%>
 <body>
 <h2>picToDraw Lobby</h2>
 <canvas id="paper"></canvas>
-<button onclick="clearCanvas();">Clear Canvas</button>
 
 
-<div id = "messages" style="overflow:hidden; height:200px;">
+
+<div id = "messages" style="overflow:hidden; height:300px;">
 </div>
 
-<form>
-	<label>Say Something:</label><br>
+<form >
+	<label>Enter Guess:</label><br>
 	<input type = "hidden" id="username" value = <%=session[:username]%>>
 	<input type = "text" data-behavior="room_speaker">
 
 </form>
 <%#= render '/rooms/form', message: @message%>
+
 </body>
+<% javascript_include_tag 'drawing.js' %>
 </html>
