@@ -7,4 +7,25 @@ class RoomsController < ApplicationController
   	App.room.speak(message: params[:message])
   end
 
+  def draw
+  	 ActionCable.server.broadcast 'room_channel',
+    	fromx: params[:fromx],
+    	fromy: params[:fromy],
+    	tox: params[:tox],
+    	toy: params[:toy],
+    	color: params[:color]
+  		head :ok
+	end
+
+	def clear
+	 ActionCable.server.broadcast 'room_channel',
+    	fromx: params[:fromx],
+    	fromy: params[:fromy],
+    	tox: params[:tox],
+    	toy: params[:toy],
+    	color: params[:color]
+  		head :ok
+
+	end
+
 end

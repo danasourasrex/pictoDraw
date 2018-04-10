@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   get '/chatAC', to: 'rooms#show'
   post '/chatAC', to: 'room_channel#speak'
+  post "/updateline", to: "rooms#draw"
+  post "/clear", to: "rooms#clear"
+
   #messages
   delete '/delAll', to: 'messages#delAll'
 

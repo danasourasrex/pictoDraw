@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+<head>
+<% javascript_include_tag 'drawing.js' %>
+<% javascript_include_tag 'liveline.js' %>
+</head>
 <%= render 'pages/navbar', controller: :pages%>
 <body>
-<h2>Chat room using Action Cable</h2>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<h2>picToDraw Lobby</h2>
+<canvas id="paper"></canvas>
+<button onclick="clearCanvas();">Clear Canvas</button>
+
 
 <div id = "messages" style="overflow:hidden; height:200px;">
 </div>
