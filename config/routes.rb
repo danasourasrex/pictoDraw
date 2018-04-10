@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
+
   #get 'chat_test/chatroom'
 
   #get 'drawing_test/draw'
@@ -20,21 +22,19 @@ Rails.application.routes.draw do
   get '/users/show/id'
   #get 'pages/about'
 
+  get '/chatAC', to: 'rooms#show'
+  post '/chatAC', to: 'room_channel#speak'
+  #messages
+  delete '/delAll', to: 'messages#delAll'
 
 
-  #CHAT TEST
-  get '/chatroom', to: 'chat_test#chatroom'
 
-  get '/AJAXTEST', to: 'chat_test#chatbox'
-
-  #Drawing Test
-  get '/drawtest', to: 'drawing_test#draw'
   
-  
-  get '/users/:id', to: 'sessions#create'
 
   #General catch all
   match ':controller(/:action(/:id))',  :via => :get
 
   resources :users
+
+  mount ActionCable.server => '/cable'
 end

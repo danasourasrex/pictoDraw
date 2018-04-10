@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">PicToDraw</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><%= link_to 'Logout', '/logout' %></li>
-          <li><%= link_to 'About', '/about' %></li>
-          <li><%= link_to 'Drawing Test', '/drawing_test/draw' %></li>
-          <li><%= link_to 'Chat Test', '/chatroom'%> </li>
-          
-          
-          <%if session[:username] == "danasourasrex@gmail.com"%>
-            <li><%= link_to 'Admin Page', '/users'%> </li>
-          <% end %> 
-          <li><a href="sass.html">Sass</a></li>
-        </ul>
-      </div>
-  </nav>
+  <%= render 'navbar', controller: :pages%>
   <body>
   <div class = "container">
     <br>
@@ -55,7 +39,7 @@
             <p>Currently Working</p>
           </div>
         <div class="card-action">
-          <%= link_to 'Chatroom', '/chatroom' %>
+          <%= link_to 'Chatroom', '/chatAC' %>
         </div>
        </div>
       </div>

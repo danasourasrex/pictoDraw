@@ -1,5 +1,8 @@
 {
   "name": "pictoDraw",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "gemfile": "^1.0.0",
+    "jquery": "^3.3.1"
+  }
 }

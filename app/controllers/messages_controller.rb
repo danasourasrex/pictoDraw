@@ -26,8 +26,9 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     #@message = Message.new(:username => session[:username])
+    #page[:message].reset
     @message = Message.new
-    @message.assign_attributes({:username => session[:username]})
+    @message.assign_attributes({:username => params[:user]})
     #okay so like params[:message] holds message => "message conent"
     #so the second thing solves that lmao
     @message.update(message: params[:message][:message])
@@ -64,6 +65,10 @@ class MessagesController < ApplicationController
       format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def delAll
+    Message.destroy_all
   end
 
   private

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<%= render 'pages/navbar', controller: :pages%>
+<body>
+<h2>Chat room using Action Cable</h2>
+<p>Find me in app/views/rooms/show.html.erb</p>
+
+<div id = "messages" style="overflow:hidden; height:200px;">
+</div>
+
+<form>
+	<label>Say Something:</label><br>
+	<input type = "hidden" id="username" value = <%=session[:username]%>>
+	<input type = "text" data-behavior="room_speaker">
+
+</form>
+<%#= render '/rooms/form', message: @message%>
+</body>
+</html>

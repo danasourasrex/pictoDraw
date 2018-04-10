@@ -1,0 +1,15 @@
+<nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">PicToDraw</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Logout', '/logout' %></li>
+          <li><%= link_to 'About', '/about' %></li>
+          <li><%= link_to 'Chat Test', '/chatAC'%> </li>
+          
+          
+          <%if session[:username] == "danasourasrex@gmail.com"%>
+            <li><%= link_to 'Admin Page', '/users'%> </li>
+          <% end %> 
+        </ul>
+      </div>
+  </nav>
