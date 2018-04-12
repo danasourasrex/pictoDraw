@@ -1,5 +1,19 @@
 
 $(function(){
+var timeLeft = 60;
+var timer = setInterval(function(){
+var secondslabel = document.getElementById("demo").value = 0 + --timeLeft;
+document.getElementById("demo").innerHTML = secondslabel;
+console.log("here");
+if(timeLeft <= 0)
+  clearInterval(timer);
+
+}, 1000);
+
+})
+
+
+$(function(){
   //vars that should be globally accessed, the document, the canvas, and the canvas context.
   document.getElementById('paper').width = 600;
   document.getElementById('paper').height = 400;
@@ -82,8 +96,8 @@ $(function(){
 function drawLine(fromx, fromy, tox, toy, color){
  ctx.beginPath();
  ctx.strokeStyle = color
- ctx.moveTo(fromx-30, fromy-205);
- ctx.lineTo(tox-30, toy-205);
+ ctx.moveTo(fromx-69, fromy-278);
+ ctx.lineTo(tox-69, toy-278);
  ctx.stroke();
 }
 //function to clear the canvas for all subscribers
