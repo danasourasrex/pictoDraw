@@ -2,6 +2,7 @@
 <html class = "teal">
    <head>
       <% javascript_include_tag 'liveline.js' %>
+      <% javascript_include_tag 'timeline.js' %>
    </head>
    <%= render 'pages/navbar', controller: :pages%>
    <body class = "teal">
@@ -43,7 +44,7 @@
             <input class="swatch_window red" type="button" onclick="colorPicker('red');"></input>
             <input class="swatch_window blue" type="button" onclick="colorPicker('blue');"></input> 
             <input class="swatch_window pink" type="button" onclick="colorPicker('pink');"></input>
-            <input class="swatch_window yellow" type="button" onclick="colorPicker('yellow');"></input> <input class="swatch_window green" type="button" onclick="colorPicker('green');"></input>
+            <input class="swatch_window yellow" type="button" onclick="colorPicker('yellow');"></input>  <input class="swatch_window green" type="button" onclick="colorPicker('green');"></input>
             <input class="swatch_window purple" type="button" onclick="colorPicker('purple');"></input>
             <input class="swatch_window orange" type="button" onclick="colorPicker('orange');"></input>
             <input class="swatch_window brown" type="button" onclick="colorPicker('brown');"></input>
@@ -192,20 +193,42 @@
             });
       
       }
+
+      function time(timeLeft){
+      	
+      	$.ajax({
+              method: "POST",
+              url: "/updateTime",
+              data: {
+                'time': timeLeft,
+                }
+            });
+
+      
+      }
+
+      
       
       function startTimerForEveryone() { 
-        $.ajax({
-              method: "POST",
-              url: "/updateline",
-              data: {
-                'fromx': -1000.42,
-                'fromy': 0,
-                'tox': 0,
-                'toy': 0,
-                'color': 0,
-                'lineThick': lineThick
-              }
-            });
+
+      	
+      var timeLeft = 60;
+  		var secondslabel = "";
+  		clearInterval(timer);
+
+		timer = setInterval(function(){
+		
+		var secondslabel = document.getElementById("timer").value = 0 + --timeLeft;
+		
+		time(timeLeft);
+		if(timeLeft <= 0)
+		{
+		    time(timeLeft);
+	
+  			clearInterval(timer);
+		}
+
+		}, 1000);
       
       }
 
@@ -217,7 +240,7 @@
       		lineThick = 10;
       	}
       	else if(size == "large"){
-      		lineThick = 15;
+      		lineThick = 25;
       	}
       }
       

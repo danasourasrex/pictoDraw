@@ -29,4 +29,10 @@ class RoomsController < ApplicationController
 
 	end
 
+  def time
+    ActionCable.server.broadcast 'room_channel',
+    time: params[:time]
+    head :ok
+  end
+
 end
