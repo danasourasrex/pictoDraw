@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ /*
+ *= require font-awesome
+ */
 @import "materialize";
 .container_message {
     border: 2px solid #FFFFFF;
@@ -21,6 +24,15 @@
     padding: 10px;
     margin: 10px 0;
 }
+
+.swatch_window {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
 
 
 
