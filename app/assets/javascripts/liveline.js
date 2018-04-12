@@ -35,7 +35,7 @@ App.messages = App.cable.subscriptions.create('RoomChannel', {
   	}
   	 else{
   	
-    	drawLine(data.fromx, data.fromy, data.tox, data.toy, data.color)
+    	drawLine(data.fromx, data.fromy, data.tox, data.toy, data.color, data.lineThick)
 	}
 }
   }

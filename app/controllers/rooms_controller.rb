@@ -13,7 +13,8 @@ class RoomsController < ApplicationController
     	fromy: params[:fromy],
     	tox: params[:tox],
     	toy: params[:toy],
-    	color: params[:color]
+    	color: params[:color],
+      lineThick: params[:lineThick]
   		head :ok
 	end
 

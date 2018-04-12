@@ -48,14 +48,33 @@
             <input class="swatch_window orange" type="button" onclick="colorPicker('orange');"></input>
             <input class="swatch_window brown" type="button" onclick="colorPicker('brown');"></input>
             <input class="swatch_window black" type="button" onclick="colorPicker('black');"></input>
-            
+            <input class="swatch_window_eraser" value="eraser" type="button" onclick="colorPicker('ivory');"></input>
+
+
+
 
 
 
 
             
          </div>
+        
       </div>
+       <h4>Thickness<h4>
+
+         	<div style = "clear: both">
+            <input type="button" value= "Small" onclick="sizeSelector('small');"></input>
+            <input type="button" value= "Medium" onclick="sizeSelector('medium');"></input> 
+            <input type="button" value= "Large" onclick="sizeSelector('large');"></input>
+           
+           
+
+
+
+
+
+            
+         </div>
       <div class="row">
          <div class="col s7 push-s5">
          </div>
@@ -70,10 +89,13 @@
         document.getElementById('paper').width = 600;
         document.getElementById('paper').height = 400;
         doc = $(document);
-      
-      
+      	   
         canvas = $('#paper');
         ctx = canvas[0].getContext('2d');
+        lineThick = 5;
+        ctx.lineWidth = lineThick;
+
+
       
         //local vars, previous coords for the client, a random color, a boolean stating if the client is drawing or not, and the time since we last told the server we were drawing.
         var prev = {};
@@ -129,7 +151,8 @@
                 'fromy': prev.y,
                 'tox': x,
                 'toy': y,
-                'color': color
+                'color': color,
+                'lineThick': lineThick
               }
             });
             //reset time since last send
@@ -145,12 +168,13 @@
         });
       });
       //function to draw a line
-      function drawLine(fromx, fromy, tox, toy, color){
+      function drawLine(fromx, fromy, tox, toy, color,lineThick){
        ctx.beginPath();
        ctx.strokeStyle = color
        ctx.moveTo(fromx-69, fromy-278);
        ctx.lineTo(tox-69, toy-278);
        ctx.stroke();
+       ctx.lineWidth = lineThick
       }
       //function to clear the canvas for all subscribers
       function clearCanvas() { 
@@ -162,7 +186,8 @@
                 'fromy': 0,
                 'tox': 0,
                 'toy': 0,
-                'color': 0
+                'color': 0,
+                'lineThick': lineThick
               }
             });
       
@@ -177,10 +202,23 @@
                 'fromy': 0,
                 'tox': 0,
                 'toy': 0,
-                'color': 0
+                'color': 0,
+                'lineThick': lineThick
               }
             });
       
+      }
+
+      function sizeSelector(size){
+      	if(size == "small"){
+      		lineThick = 5;
+      	}
+      	else if(size == "medium"){
+      		lineThick = 10;
+      	}
+      	else if(size == "large"){
+      		lineThick = 15;
+      	}
       }
       
       function colorPicker(colorSelected) { 
@@ -202,6 +240,8 @@
         	color = "brown";
         }else if(colorSelected == "black"){
         	color = "black";
+        }else if(colorSelected == "ivory"){
+        	color = "ivory";
         }  
       
       }
