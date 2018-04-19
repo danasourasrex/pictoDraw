@@ -2,9 +2,13 @@ class RoomsController < ApplicationController
   def show
   	@username = params[:usename]
   	@messages = Message.all
+<<<<<<< HEAD
     
 
 
+=======
+    @word = Word.find_by(id:(rand(1..80)))
+>>>>>>> 156789903718dc287f08013bce44b52142b6b524
   end
   def speak
   	App.room.speak(message: params[:message])

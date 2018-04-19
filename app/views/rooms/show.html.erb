@@ -11,7 +11,7 @@
          <div class="col s12 m7">
             <div class="card blue-grey darken-1">
                <div class="card-content white-text">
-                  <p class="card-title center">Draw Something</p>
+                  <p class="card-title center"><%=@word.word%></p>
                   <canvas class = " center " style="background-color: ivory"id="paper"></canvas>
                </div>
                <div class="card-action">
@@ -102,7 +102,7 @@
         ctx = canvas[0].getContext('2d');
         lineThick = 5;
         ctx.lineWidth = lineThick;
-
+        canDraw = true;
 
       
         //local vars, previous coords for the client, a random color, a boolean stating if the client is drawing or not, and the time since we last told the server we were drawing.
@@ -126,7 +126,7 @@
           }
           //set drawing to true and the coordinates for the prev object
           //the prev object is used for the start of the drawing line
-          drawing = true;
+          drawing = canDraw;
           prev.x = x;
           prev.y = y;
         });
