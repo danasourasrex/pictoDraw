@@ -2,14 +2,22 @@ class RoomsController < ApplicationController
   def show
   	@username = params[:usename]
   	@messages = Message.all
-<<<<<<< HEAD
-    
+    if ConnectedUser.exists?(session[:user_id])
+      
+    else
+      ConnectedUser.create username: session[:username]
+    end
+    @connected = ConnectedUser.all
 
 
-=======
     @word = Word.find_by(id:(rand(1..80)))
->>>>>>> 156789903718dc287f08013bce44b52142b6b524
+
   end
+
+  def leave
+    ConnectedUser.find_by(username: session[:username]).destroy
+  end
+
   def speak
   	App.room.speak(message: params[:message])
   end
