@@ -82,6 +82,13 @@
          <div class="col s5 pull-s7">
          </div>
       </div>
+      <p>Connected Users</p>
+      <form id = 'connected_username'>
+                     <input type = "hidden" id="connected_username" value = <%=session[:username]%>>
+                  </form>
+      <div id = "connected_users">
+        <p>This should show: </p>
+      </div>
    </body>
    <script>
       $(function(){
