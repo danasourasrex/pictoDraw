@@ -87,7 +87,9 @@
                      <input type = "hidden" id="connected_username" value = <%=session[:username]%>>
                   </form>
       <div id = "connected_users">
-        <p>This should show: </p>
+         <% @connected.each do |conn| %>
+         <p><%=conn.username%></p>
+         <% end %>
       </div>
    </body>
    <script>
