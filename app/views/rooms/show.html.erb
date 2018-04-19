@@ -38,6 +38,18 @@
                </div>
             </div>
          </div>
+         <div class="col s12 m5">
+         <div class="card blue-grey darken-1" style="overflow; height:250px; width:250px;">
+         <div class="card-content white-text">
+            <p>Connected Users</p>
+            <div id = "data">
+               <% @connected.each do |conn| %>
+               <p><%=conn.username%></p>
+               <% end %>
+            </div>
+         </div>
+      </div>
+    </div>
          <input id="clear_canvas" type="button" value="Clear Canvas" onclick="clearCanvas();" />
          <input id="start_timer" type="button" value="Start Timer" onclick="startTimerForEveryone();" />
          <div style = "clear: both">
@@ -50,62 +62,54 @@
             <input class="swatch_window brown" type="button" onclick="colorPicker('brown');"></input>
             <input class="swatch_window black" type="button" onclick="colorPicker('black');"></input>
             <input class="swatch_window_eraser" value="eraser" type="button" onclick="colorPicker('ivory');"></input>
-
-
-
-
-
-
-
-            
          </div>
-        
       </div>
-       <h4>Thickness<h4>
-
-         	<div style = "clear: both">
-            <input type="button" value= "Small" onclick="sizeSelector('small');"></input>
-            <input type="button" value= "Medium" onclick="sizeSelector('medium');"></input> 
-            <input type="button" value= "Large" onclick="sizeSelector('large');"></input>
-           
-           
-
-
-
-
-
-            
-         </div>
+      <h4>
+      Thickness
+      <h4>
+      <div style = "clear: both">
+         <input type="button" value= "Small" onclick="sizeSelector('small');"></input>
+         <input type="button" value= "Medium" onclick="sizeSelector('medium');"></input> 
+         <input type="button" value= "Large" onclick="sizeSelector('large');"></input>
+      </div>
       <div class="row">
          <div class="col s7 push-s5">
          </div>
          <div class="col s5 pull-s7">
          </div>
       </div>
-      <p>Connected Users</p>
-      <form id = 'connected_username'>
-                     <input type = "hidden" id="connected_username" value = <%=session[:username]%>>
-                  </form>
-      <div id = "connected_users">
-         <% @connected.each do |conn| %>
-         <p><%=conn.username%></p>
-         <% end %>
-      </div>
+      
    </body>
    <script>
+      window.onbeforeunload = function (e) 
+      {
+        $.ajax({
+          url: "/leave",
+          type: 'POST'
+              });
+      
+      }
+      
+      
+      $(document).ready(function(){  
+        setInterval(function(){   
+            $("#data").load("/chatAC #data");
+        }, 10000);
+      });
+      
       $(function(){
         //vars that should be globally accessed, the document, the canvas, and the canvas context.
-       	color = "black"
+        color = "black"
         document.getElementById('paper').width = 600;
         document.getElementById('paper').height = 400;
         doc = $(document);
-      	   
+           
         canvas = $('#paper');
         ctx = canvas[0].getContext('2d');
         lineThick = 5;
         ctx.lineWidth = lineThick;
         canDraw = true;
-
+      
       
         //local vars, previous coords for the client, a random color, a boolean stating if the client is drawing or not, and the time since we last told the server we were drawing.
         var prev = {};
@@ -202,78 +206,78 @@
             });
       
       }
-
+      
       function time(timeLeft){
-      	
-      	$.ajax({
+        
+        $.ajax({
               method: "POST",
               url: "/updateTime",
               data: {
                 'time': timeLeft,
                 }
             });
-
+      
       
       }
-
+      
       
       
       function startTimerForEveryone() { 
-
-      	
+      
+        
       var timeLeft = 60;
-  		var secondslabel = "";
-  		clearInterval(timer);
-
-		timer = setInterval(function(){
-		
-		var secondslabel = document.getElementById("timer").value = 0 + --timeLeft;
-		
-		time(timeLeft);
-		if(timeLeft <= 0)
-		{
-		    time(timeLeft);
-	
-  			clearInterval(timer);
-		}
-
-		}, 1000);
+      var secondslabel = "";
+      clearInterval(timer);
+      
+      timer = setInterval(function(){
+      
+      var secondslabel = document.getElementById("timer").value = 0 + --timeLeft;
+      
+      time(timeLeft);
+      if(timeLeft <= 0)
+      {
+      time(timeLeft);
+      
+      clearInterval(timer);
+      }
+      
+      }, 1000);
       
       }
-
+      
       function sizeSelector(size){
-      	if(size == "small"){
-      		lineThick = 5;
-      	}
-      	else if(size == "medium"){
-      		lineThick = 10;
-      	}
-      	else if(size == "large"){
-      		lineThick = 25;
-      	}
+        if(size == "small"){
+          lineThick = 5;
+        }
+        else if(size == "medium"){
+          lineThick = 10;
+        }
+        else if(size == "large"){
+          lineThick = 25;
+        }
       }
       
       function colorPicker(colorSelected) { 
         if(colorSelected == "red"){
-        	color = "red";
+          color = "red";
         }else if(colorSelected == "blue"){
-        	color = "blue";
+          color = "blue";
         }else if(colorSelected == "pink"){
-        	color = "pink";
+          color = "pink";
         }else if(colorSelected == "yellow"){
-        	color = "yellow";
+          color = "yellow";
         }else if(colorSelected == "green"){
-        	color = "green";
+          color = "green";
         }else if(colorSelected == "purple"){
-        	color = "purple";
+          color = "purple";
         }else if(colorSelected == "orange"){
-        	color = "orange";
+          color = "orange";
         }else if(colorSelected == "brown"){
-        	color = "brown";
+          color = "brown";
         }else if(colorSelected == "black"){
-        	color = "black";
+          color = "black";
         }else if(colorSelected == "ivory"){
-        	color = "ivory";
+          color = "ivory";
         }  
       
       }

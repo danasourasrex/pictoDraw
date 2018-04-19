@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   post "/updateline", to: "rooms#draw"
   post "/updateTime", to:"rooms#time"
   post "/clear", to: "rooms#clear"
+  post "/leave", to: "rooms#leave"
+  get '/updateUsersInLobby', to: "rooms#updateUsersInLobby"
 
   #messages
   delete '/delAll', to: 'messages#delAll'

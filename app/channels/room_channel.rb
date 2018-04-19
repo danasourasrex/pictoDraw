@@ -1,12 +1,17 @@
 class RoomChannel < ApplicationCable::Channel
 
   def subscribed
-     stream_from "room_channel"
+  	stream_from "room_channel"
+  	
+
+  	puts 'in subscribed'
+
 
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  	puts 'in unsubscribed'
+    
   end
 
   def speak(data)
