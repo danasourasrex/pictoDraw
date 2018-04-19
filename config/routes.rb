@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get 'drawing_test/draw'
 
   resources :messages
+  resources :words
   root 'pages#home'
   get '/signup',  to: 'users#new'
   post '/signup', to: 'users#create'
@@ -31,7 +32,9 @@ Rails.application.routes.draw do
   #messages
   delete '/delAll', to: 'messages#delAll'
 
-
+  #Word Creation
+  get '/addWord', to: 'pages#wordData'
+  get '/wordDataCreate', to: 'pages#wordDataCreate'
 
   
 

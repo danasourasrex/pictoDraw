@@ -1,0 +1,28 @@
+<h3>Add a word to the database</h3>
+
+
+
+<%= form_tag("/wordDataCreate", method: "get") do %>
+  <%= label_tag(:word, "Create Word") %>
+  <%= text_field_tag(:word) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<table id = "words">
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.word %></td>
+        <td><%= word.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
