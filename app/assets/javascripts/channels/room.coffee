@@ -11,9 +11,11 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     $('#messages').prepend data['message']
 
   speak: (message, username)->
-    console.log message
-    console.log username
+    if message is document.getElementById('theWordtoGuess').innerHTML
+      console.log 'success'
+    console.log 'past if'
     @perform 'speak', message: message, username: username
+    
 
 $(document).on 'keypress','[data-behavior~=room_speaker]',(event)->
   if event.keyCode is 13 # return = send

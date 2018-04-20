@@ -9,6 +9,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( liveline.js )
 Rails.application.config.assets.precompile += %w( timeline.js )
+Rails.application.config.assets.precompile += %w( wordline.js )
 
 #Rails.application.config.assets.precompile += %w( drawing.js )
 # Precompile additional assets.

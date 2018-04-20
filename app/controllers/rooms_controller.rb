@@ -26,12 +26,16 @@ class RoomsController < ApplicationController
   end
 
   def speak
-  	 App.room.speak(message: params[:message])
+
+
+    App.room.speak(message: params[:message])
+
   end
 
-  def updateUsersInLobby
-    puts 'hi'
-    @connected = ConnectedUser.all
+  def updateWordToGuess
+    ActionCable.server.broadcast 'room_channel',
+    word: params[:word]
+    head :ok
   end
 
   def draw
