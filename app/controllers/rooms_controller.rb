@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
   end
 
   def speak
-  	App.room.speak(message: params[:message])
+  	 App.room.speak(message: params[:message])
   end
 
   def updateUsersInLobby
