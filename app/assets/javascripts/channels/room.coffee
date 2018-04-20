@@ -11,9 +11,9 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     $('#messages').prepend data['message']
 
   speak: (message, username)->
-    if message is document.getElementById('theWordtoGuess').innerHTML
-      console.log 'success'
-    console.log 'past if'
+    #if message is document.getElementById('theWordtoGuess').innerHTML
+     # console.log 'success'
+    #console.log 'past if'
     @perform 'speak', message: message, username: username
     
 

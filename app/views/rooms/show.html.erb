@@ -25,14 +25,41 @@
       
    </body>
    <script>
-      window.onbeforeunload = function (e) 
-      {
-        $.ajax({
+
+
+window.onpopstate = function(event) 
+{
+
+  $.ajax({
           url: "/leave",
           type: 'POST'
-              });
-      
-      }
+          });
+
+}
+
+
+window.onbeforeunload = function(event)
+{
+
+  $.ajax({
+          url: "/leave",
+          type: 'POST'
+          });
+
+}
+    
+  
+
+
+    
+
+
+    
+ 
+
+       
+
+
       
       
       $(document).ready(function(){  

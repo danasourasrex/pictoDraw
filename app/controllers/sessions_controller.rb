@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   def new
     if session[:user_id] != nil
       redirect_to "/landing"
+      if ConnectedUser.exists?(username: session[:username])
+        ConnectedUser.find_by(username: session[:username]).destroy
+      end
     end
   end
 

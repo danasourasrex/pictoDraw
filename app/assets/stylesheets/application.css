@@ -17,9 +17,7 @@
  *= require font-awesome
  */
 @import "materialize";
-.hideThisWord{
-  display:none;
-}
+
 .container_message {
     border: 2px solid #FFFFFF;
     background-color: #708090;

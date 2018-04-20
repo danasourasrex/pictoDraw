@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
   def home
+
   	if session[:user_id] != nil
   		redirect_to "/landing"
+      
   	end
   end
 
@@ -19,6 +21,17 @@ class PagesController < ApplicationController
 	@message.save
 	redirect_to "/addWord"
   end
+
+  def landingPage
+    puts 'in here'
+    puts session[:username]
+    if ConnectedUser.exists?(username: session[:username])
+      ConnectedUser.find_by(username: session[:username]).destroy
+    end
+
+  end
+
+
 
 
   def about

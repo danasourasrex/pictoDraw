@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   #get 'pages/home'
   get '/users/show/id'
   #get 'pages/about'
+  post '/destroyLobbyUser', to: 'pages#destroyLobbyUser'
 
   get '/chatAC', to: 'rooms#show'
   post '/chatAC', to: 'room_channel#speak'
