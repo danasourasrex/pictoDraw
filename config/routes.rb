@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post "/updateTime", to:"rooms#time"
   post "/clear", to: "rooms#clear"
   post "/leave", to: "rooms#leave"
-  get '/updateUsersInLobby', to: "rooms#updateUsersInLobby"
+  post '/updateWordToGuess', to: "rooms#updateWordToGuess"
 
   #messages
   delete '/delAll', to: 'messages#delAll'
