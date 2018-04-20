@@ -10,76 +10,9 @@
       <h2 class = "center">picToDraw Lobby</h2>
       
       <div class="row">
-<<<<<<< HEAD
         <%= render 'rooms/drawingWindow', controller: :rooms%>
         <%= render 'rooms/chatWindow', controller: :rooms%>
-=======
-         <div class="col s12 m7">
-            <div class="card blue-grey darken-1">
-               <div class="card-content white-text">
-                 
-                  <p id="theWordToGuessForUsers" class="card-title center"> </p>
-                  <canvas class = " center " style="background-color: ivory"id="paper"></canvas>
-               </div>
-               <div class="card-action">
-                  <div style = "clear: both">
-                     <h2 style = "float: left" id="time_left"></h2>
-                     <h2 style = "float: left" id = "timer"> </h2>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col s12 m5">
-            <div class="card blue-grey darken-1">
-               <div class="card-content white-text">
-                  <span class="card-title">Chat</span>
-                  <div id = "messages" style="overflow:hidden; height:303px;">
-                  </div>
-                  <form >
-                     <input type = "hidden" id="username" value = <%=session[:username]%>>
-                     <br>
-                     <br>
-                     <label>Enter Guess:</label><br>
-                     <input type = "text" data-behavior="room_speaker">
-                  </form>
-               </div>
-            </div>
-         </div>
-         <div class="col s12 m5">
-         <div class="card blue-grey darken-1" style="overflow; height:250px; width:250px;">
-         <div class="card-content white-text">
-            <p>Connected Users</p>
-            <div id = "data">
-               <% @connected.each do |conn| %>
-               <p><%=conn.username%></p>
-               <% end %>
-            </div>
-         </div>
-      </div>
-    </div>
-         <input id="clear_canvas" type="button" value="Clear Canvas" onclick="clearCanvas();" />
-         <input id="start_timer" type="button" value="Start Timer" onclick="startTimerForEveryone();" />
-         <input id="get_word" type="button" value="Sync Word" onclick="theWordToGuess('<%=@word.word%>');" />
-         <div style = "clear: both">
-            <input class="swatch_window red" type="button" onclick="colorPicker('red');"></input>
-            <input class="swatch_window blue" type="button" onclick="colorPicker('blue');"></input> 
-            <input class="swatch_window pink" type="button" onclick="colorPicker('pink');"></input>
-            <input class="swatch_window yellow" type="button" onclick="colorPicker('yellow');"></input>  <input class="swatch_window green" type="button" onclick="colorPicker('green');"></input>
-            <input class="swatch_window purple" type="button" onclick="colorPicker('purple');"></input>
-            <input class="swatch_window orange" type="button" onclick="colorPicker('orange');"></input>
-            <input class="swatch_window brown" type="button" onclick="colorPicker('brown');"></input>
-            <input class="swatch_window black" type="button" onclick="colorPicker('black');"></input>
-            <input class="swatch_window_eraser" value="eraser" type="button" onclick="colorPicker('ivory');"></input>
-         </div>
-      </div>
-      <h4>
-      Thickness
-      <h4>
-      <div style = "clear: both">
-         <input type="button" value= "Small" onclick="sizeSelector('small');"></input>
-         <input type="button" value= "Medium" onclick="sizeSelector('medium');"></input> 
-         <input type="button" value= "Large" onclick="sizeSelector('large');"></input>
->>>>>>> 68e24e877df3fdee869720d4eb8e14654c6706fd
+
       </div>
       <div class = "row">
         <%= render 'rooms/drawingControls', controller: :rooms%>
