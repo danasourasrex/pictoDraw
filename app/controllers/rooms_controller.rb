@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
   def show
+    if session[:user_id] == nil
+      redirect_to "/login"
+    end
   	@username = params[:usename]
   	@messages = Message.all
     @connected = ConnectedUser.all
@@ -21,6 +24,8 @@ class RoomsController < ApplicationController
 
   def leave
     puts 'bye'
+        ConnectedUser.find_by(username: nil).destroy
+
     ConnectedUser.find_by(username: session[:username]).destroy
 
   end
