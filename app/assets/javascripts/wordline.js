@@ -6,11 +6,24 @@
 App.messages = App.cable.subscriptions.create('RoomChannel',{
 	received:function(data){
 		
-		if(data.word != /[^a-zA-Z0-9]/g && data.word != undefined)
+		if((data.word != /[^a-zA-Z0-9]/g && data.word != undefined)&&(data.drawer != /[^a-zA-Z0-9]/g && data.drawer != undefined))
 		{
-		console.log(data.word + " in timeline");
-		document.getElementById("theWordToGuessForUsers").innerHTML = data.word;
-		
+		console.log(data.word + " in wordline");
+		console.log(data.drawer + " in wordline");
+		word_to_guess = data.word;
+		drawer = data.drawer
+		if(document.getElementById('username').value != data.drawer)
+		{
+		canDraw = false;
+
+		document.getElementById("word").innerHTML = '&nbsp';
+		document.getElementById("drawing_user").innerHTML = "Current Drawer: " + data.drawer;
+		}
+		else{
+		canDraw = true;
+		document.getElementById("word").innerHTML = "Your Word: " + data.word;	
+		document.getElementById("drawing_user").innerHTML = "Current Drawer: " + data.drawer;
+		}
 		}
 		
 

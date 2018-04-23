@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   post "/clear", to: "rooms#clear"
   post "/leave", to: "rooms#leave"
   post '/updateWordToGuess', to: "rooms#updateWordToGuess"
+  post '/finalResults', to: "rooms#finalResults"
+  
 
   #messages
   delete '/delAll', to: 'messages#delAll'

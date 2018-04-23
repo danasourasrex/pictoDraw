@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html class = "teal">
+ <%= render 'navbar', controller: :pages%>
+<head>
+</head>
+<body>
 <div class="col s12 m5">
    <div class="card blue-grey darken-1" style="overflow; height:227px;">
       <div class="card-content white-text">
@@ -11,7 +17,7 @@
               <th>Score</th>
           </tr>
           <tbody>
-            <% @connected.each do |conn| %>
+            <% @connected.order('score DESC').each do |conn| %>
           <tr>
             <td><%=conn.username%></td>
             <td><%=conn.score%></td>
@@ -21,6 +27,16 @@
     </thead>
   </table>
    </div>
+   <h1 id="winner"></h1>
       </div>
    </div>
+   
 </div>
+
+</body>
+
+<script>
+  document.getElementById("winner").innerHTML = "The Winner is: " + document.getElementById("connected_users").rows[1].cells[0].innerHTML + "!"
+  
+</script>
+</body>

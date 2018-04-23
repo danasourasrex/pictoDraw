@@ -5,16 +5,22 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     
   disconnected: ->
     
-    
+  update_score: (score, username) ->
+    console.log score
+    console.log username
+    @perform 'update_score', score: score, username: username
+
 
   received: (data) ->
     $('#messages').prepend data['message']
 
   speak: (message, username)->
-    #if message is document.getElementById('theWordtoGuess').innerHTML
-     # console.log 'success'
-    #console.log 'past if'
     @perform 'speak', message: message, username: username
+    if message is word_to_guess and username != drawer
+      App.room.update_score document.getElementById('timer').innerHTML, username
+      $ endRound
+    
+    
     
 
 $(document).on 'keypress','[data-behavior~=room_speaker]',(event)->

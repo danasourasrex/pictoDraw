@@ -8,269 +8,293 @@
    <%= render 'pages/navbar', controller: :pages%>
    <body class = "teal">
       <h2 class = "center">picToDraw Lobby</h2>
-      
       <div class="row">
-        <%= render 'rooms/drawingWindow', controller: :rooms%>
-        <%= render 'rooms/chatWindow', controller: :rooms%>
-
+         
+         <%= render 'rooms/drawingWindow', controller: :rooms%>
+         <%= render 'rooms/chatWindow', controller: :rooms%>
       </div>
       <div class = "row">
-        <%= render 'rooms/drawingControls', controller: :rooms%>
-        <%= render 'rooms/connectedUsers', controller: :rooms%>
-        
+         <%= render 'rooms/drawingControls', controller: :rooms%>
+         <%= render 'rooms/connectedUsers', controller: :rooms%>
       </div>
-         
-         
-
       
+
    </body>
+
    <script>
 
-
-window.onpopstate = function(event) 
-{
-  console.log("hey");
-  $.ajax({
-          url: "/leave",
-          type: 'POST'
-          });
-
-}
+      
 
 
-window.onbeforeunload = function(event)
-{
 
-  $.ajax({
-          url: "/leave",
-          type: 'POST'
-          });
-
-}
-    
-  
-
-
-    
-
-
-    
- 
-
-       
-
-
-      
-      
-      $(document).ready(function(){  
-        setInterval(function(){   
-            $("#data").load("/chatAC #data");
-        }, 10000);
-      });
-      
-      $(function(){
-        //vars that should be globally accessed, the document, the canvas, and the canvas context.
-        color = "black"
-        document.getElementById('paper').width = 600;
-        document.getElementById('paper').height = 400;
-        doc = $(document);
-           
-        canvas = $('#paper');
-        ctx = canvas[0].getContext('2d');
-        lineThick = 5;
-        ctx.lineWidth = lineThick;
-        canDraw = true;
-      
-      
-        //local vars, previous coords for the client, a random color, a boolean stating if the client is drawing or not, and the time since we last told the server we were drawing.
-        var prev = {};
-        
-        var drawing = false;
-        var timeSinceLastSend = $.now();
-        //event to fire if mouse down or touch on canvas element
-        canvas.on("mousedown touchstart", function(e){
-          var rect = this.getBoundingClientRect();
-      
-          e.preventDefault();
-          //get coords if mouse down
-          var x = e.pageX;
-          var y = e.pageY;
-          //get coords if touch
-          if ( e.originalEvent.changedTouches ) {
-            e = e.originalEvent.changedTouches[0];
-            x = e.pageX;
-            y = e.pageY;
-          }
-          //set drawing to true and the coordinates for the prev object
-          //the prev object is used for the start of the drawing line
-          drawing = canDraw;
-          prev.x = x;
-          prev.y = y;
-        });
-        //event to fire if the mouse is released/left or touched up
-        doc.bind('mouseup mouseleave touchend',function(){
-          drawing = false;
-        });
-        //event to fire as the mouse moves or finger is dragged
-        doc.on('mousemove touchmove',function(e){
-      
-          //if we are drawing, and its been over 10ms since last update
-          if(drawing && $.now() - timeSinceLastSend > 10){
-      
-            //get mouse coords
-            var x = e.pageX;
-            var y = e.pageY;
-            //if touching, get touch coords
-            if ( e.originalEvent.changedTouches ) {
-              e = e.originalEvent.changedTouches[0];
-              x = e.pageX;
-              y = e.pageY;
-            }
-            //create ajax request to /updateline
-            //data is prev coordinates and current coordinates and color
-            $.ajax({
-              method: "POST",
-              url: "/updateline",
-              data: {
-                'fromx': prev.x,
-                'fromy': prev.y,
-                'tox': x,
-                'toy': y,
-                'color': color,
-                'lineThick': lineThick
-              }
-            });
-            //reset time since last send
-            timeSinceLastSend = $.now();
-          }
-          //draw the line and reset prev
-          if(drawing && x && y){
-            drawLine(prev.x, prev.y, x, y, color);
-      
-            prev.x = x;
-            prev.y = y;
-          }
-        });
-      });
-      //function to draw a line
-      function drawLine(fromx, fromy, tox, toy, color,lineThick){
-       ctx.beginPath();
-       ctx.strokeStyle = color
-       ctx.moveTo(fromx-69, fromy-278);
-       ctx.lineTo(tox-69, toy-278);
-       ctx.stroke();
-       ctx.lineWidth = lineThick
-      }
-      //function to clear the canvas for all subscribers
-      function clearCanvas() { 
-        $.ajax({
-              method: "POST",
-              url: "/updateline",
-              data: {
-                'fromx': -1001.42,
-                'fromy': 0,
-                'tox': 0,
-                'toy': 0,
-                'color': 0,
-                'lineThick': lineThick
-              }
-            });
-      
-      }
-      
-      function time(timeLeft){
-        
-        $.ajax({
-              method: "POST",
-              url: "/updateTime",
-              data: {
-                'time': timeLeft,
-                }
-            });
-      
-      
-      }
-
-      function theWordToGuess(word){
-        console.log(word);
-        $.ajax({
-              method: "POST",
-              url: "/updateWordToGuess",
-              data: {
-                'word': word,
-                }
-            });
-      
-      
-      }
-      
-      
-      
-      function startTimerForEveryone() { 
-      
-        
-      var timeLeft = 60;
-      var secondslabel = "";
-      clearInterval(timer);
-      
-      timer = setInterval(function(){
-      
-      var secondslabel = document.getElementById("timer").value = 0 + --timeLeft;
-      
-      time(timeLeft);
-      if(timeLeft <= 0)
+      window.onpopstate = function(event) 
       {
-      time(timeLeft);
-      
-      clearInterval(timer);
-      }
-      
-      }, 1000);
+        $.ajax({
+                url: "/leave",
+                type: 'POST'
+                });
       
       }
       
-      function sizeSelector(size){
-        if(size == "small"){
-          lineThick = 5;
-        }
-        else if(size == "medium"){
-          lineThick = 10;
-        }
-        else if(size == "large"){
-          lineThick = 25;
-        }
-      }
       
+             
+            $(document).ready(function(){  
+              setInterval(function(){   
+                  $("#data").load("/chatAC #data");
+              }, 10000);
+            });
+            
+            $(function(){
+              //vars that should be globally accessed, the document, the canvas, and the canvas context.
+              color = "black"
+              document.getElementById('paper').width = 600;
+              document.getElementById('paper').height = 400;
+              doc = $(document);
+                 
+              canvas = $('#paper');
+              ctx = canvas[0].getContext('2d');
+              lineThick = 5;
+              ctx.lineWidth = lineThick;
+              canDraw = true;
+            
+              //local vars, previous coords for the client, a random color, a boolean stating if the client is drawing or not, and the time since we last told the server we were drawing.
+              var prev = {};
+              
+              var drawing = false;
+              var timeSinceLastSend = $.now();
+              //event to fire if mouse down or touch on canvas element
+              canvas.on("mousedown touchstart", function(e){
+                var rect = this.getBoundingClientRect();
+            
+                e.preventDefault();
+                //get coords if mouse down
+                var x = e.pageX;
+                var y = e.pageY;
+                //get coords if touch
+                if ( e.originalEvent.changedTouches ) {
+                  e = e.originalEvent.changedTouches[0];
+                  x = e.pageX;
+                  y = e.pageY;
+                }
+                //set drawing to true and the coordinates for the prev object
+                //the prev object is used for the start of the drawing line
+                drawing = canDraw;
+                prev.x = x;
+                prev.y = y;
+              });
+              //event to fire if the mouse is released/left or touched up
+              doc.bind('mouseup mouseleave touchend',function(){
+                drawing = false;
+              });
+              //event to fire as the mouse moves or finger is dragged
+              doc.on('mousemove touchmove',function(e){
+            
+                //if we are drawing, and its been over 10ms since last update
+                if(drawing && $.now() - timeSinceLastSend > 10){
+            
+                  //get mouse coords
+                  var x = e.pageX;
+                  var y = e.pageY;
+                  //if touching, get touch coords
+                  if ( e.originalEvent.changedTouches ) {
+                    e = e.originalEvent.changedTouches[0];
+                    x = e.pageX;
+                    y = e.pageY;
+                  }
+                  //create ajax request to /updateline
+                  //data is prev coordinates and current coordinates and color
+                  $.ajax({
+                    method: "POST",
+                    url: "/updateline",
+                    data: {
+                      'fromx': prev.x,
+                      'fromy': prev.y,
+                      'tox': x,
+                      'toy': y,
+                      'color': color,
+                      'lineThick': lineThick
+                    }
+                  });
+                  //reset time since last send
+                  timeSinceLastSend = $.now();
+                }
+                //draw the line and reset prev
+                if(drawing && x && y){
+                  drawLine(prev.x, prev.y, x, y, color);
+            
+                  prev.x = x;
+                  prev.y = y;
+                }
+              });
+            });
+            //function to draw a line
+            function drawLine(fromx, fromy, tox, toy, color,lineThick){
+             ctx.beginPath();
+             ctx.strokeStyle = color
+             ctx.moveTo(fromx-70, fromy-320);
+             ctx.lineTo(tox-70, toy-320);
+             ctx.stroke();
+             ctx.lineWidth = lineThick
+            }
+            //function to clear the canvas for all subscribers
+            function clearCanvas() { 
+              $.ajax({
+                    method: "POST",
+                    url: "/updateline",
+                    data: {
+                      'fromx': -1001.42,
+                      'fromy': 0,
+                      'tox': 0,
+                      'toy': 0,
+                      'color': 0,
+                      'lineThick': lineThick
+                    }
+                  });
+            
+            }
+            
+            function time(timeLeft){
+              
+              $.ajax({
+                    method: "POST",
+                    url: "/updateTime",
+                    data: {
+                      'time': timeLeft,
+                      }
+                  });
+            
+            
+            }
+      
+            function theWordToGuess(word,drawer){
+              console.log(word);
+              $.ajax({
+                    method: "POST",
+                    url: "/updateWordToGuess",
+                    data: {
+                      'word': word,
+                      'drawer': drawer
+                      }
+                  });
+            
+            
+            }
 
+            setInterval(function(){
+            cellText = [];
+              $('#connected_users td').each(function() {
+              cellText.push($(this).html());    
+                });
+            });
+
+              function getCellTextLength()
+              {
+                return cellText.length
+              }
+            
+            function generate_random(){
+              
+              console.log(cellText);
+              var number = Math.floor( Math.random() * cellText.length / 2 ) * 2;
+              array_of_words =["Angry","Fireworks","Pumpkin","Baby","Flower","Rainbow","Beard","Flying","saucer","Recycle","Bible","Giraffe","Sand castle","Bikini","Glasses","Snowflake","Book","High heel","Stairs","Bucket","Ice cream cone","Starfish","Bumble bee","Igloo","Strawberry","Butterfly","Lady bug","Sun","Camera","Lamp","Tire","Cat","Lion","Toast","Church","Mailbox","Toothbrush","Crayon","Night","Toothpaste","Dolphin","Nose","Truck","Egg","Olympics","Volleyball","Eiffel Tower","Peanut","Brain","Kitten","Playground","Bubble bath","Kiwi","Pumpkin pie","Buckle","Lipstick","Raindrop","Bus","Lobster","Robot","Car accident","Lollipop","Sand castle","Castle","Magnet","Slipper","Chain saw","Megaphone","Snowball","Circus tent","Mermaid","Sprinkler","Computer","Minivan","Statue of Liberty","Crib","Mount Rushmore","Tadpole","Dragon","Music","Teepee","Dumbbell","North pole","Telescope","Eel","Nurse","Train","Ferris wheel","Owl","Tricycle","Flag","Pacifier","Tutu","Junk mail","Piano","Back seat","Highchair","Rock band","Birthday","Hockey","Sasquatch","Black hole","Hotel","Scrambled eggs","Blizzard","Jump rope","Seat belt","Burrito","Koala","Skip","Captain","Leprechaun","Solar eclipse","Chandelier","Light","Space","Crib","Mask","Stethoscope","Cruise ship","Mechanic","Stork","Dance","Mom","Sunburn","Deodorant","Mr Potato Head","Thread","Facebook","Pantyhose","Tourist","Flat","Paper plate","United States","Frame","Photo","WIFI","Full moon","Pilgram","Zombie","Game","Pirate"];
+              var drawing_user = cellText[number];
+              var word = array_of_words[Math.floor(Math.random()*array_of_words.length)];
+              clearCanvas();
+              theWordToGuess(word,drawing_user);
+            }
+            
+            function startTimerForEveryone() { 
+              
+            if(document.getElementById('username').value == document.getElementById("connected_users").rows[1].cells[0].innerHTML){
+              generate_random();
+            var timeLeft = 30;
+            var secondslabel = "";
+            clearInterval(timer);
+            
+            timer = setInterval(function(){
+            
+            var secondslabel = document.getElementById("timer").value = 0 + --timeLeft;
+            
+            time(timeLeft);
+            if(timeLeft <= 0)
+            {
+            time(timeLeft);
+            clearInterval(timer);
+           
+            }
+            
+            }, 1000);
+          }else{
+
+          }
+        }
+            function endRound()
+            {
+              generate_random();
+
+            }
+            
+            game_running = false;
+            setInterval(function(){ 
+                  console.log("hey");  
+                  console.log(getCellTextLength());
+                  if(getCellTextLength() > 2 && !game_running)
+                  {
+                    console.log(document.getElementById('username').value);
+                    console.log(document.getElementById("connected_users").rows[1].cells[0].innerHTML);
+                    if(document.getElementById('username').value == document.getElementById("connected_users").rows[1].cells[0].innerHTML){
+                      console.log("MADE IT IN HERE");
+
+                    startTimerForEveryone();
+                  }
+                  } 
+              }, 10000);
+            
+            
+            
+            function sizeSelector(size){
+              if(size == "small"){
+                lineThick = 5;
+              }
+              else if(size == "medium"){
+                lineThick = 10;
+              }
+              else if(size == "large"){
+                lineThick = 25;
+              }
+            }
+            
       
-      
-      function colorPicker(colorSelected) { 
-        if(colorSelected == "red"){
-          color = "red";
-        }else if(colorSelected == "blue"){
-          color = "blue";
-        }else if(colorSelected == "pink"){
-          color = "pink";
-        }else if(colorSelected == "yellow"){
-          color = "yellow";
-        }else if(colorSelected == "green"){
-          color = "green";
-        }else if(colorSelected == "purple"){
-          color = "purple";
-        }else if(colorSelected == "orange"){
-          color = "orange";
-        }else if(colorSelected == "brown"){
-          color = "brown";
-        }else if(colorSelected == "black"){
-          color = "black";
-        }else if(colorSelected == "ivory"){
-          color = "ivory";
-        }  
-      
-      }
-      
-      
-      
-      
+            
+            
+            function colorPicker(colorSelected) { 
+              if(colorSelected == "red"){
+                color = "red";
+              }else if(colorSelected == "blue"){
+                color = "blue";
+              }else if(colorSelected == "pink"){
+                color = "pink";
+              }else if(colorSelected == "yellow"){
+                color = "yellow";
+              }else if(colorSelected == "green"){
+                color = "green";
+              }else if(colorSelected == "purple"){
+                color = "purple";
+              }else if(colorSelected == "orange"){
+                color = "orange";
+              }else if(colorSelected == "brown"){
+                color = "brown";
+              }else if(colorSelected == "black"){
+                color = "black";
+              }else if(colorSelected == "ivory"){
+                color = "ivory";
+              }  
+            
+            }
+            
+            
+            
+            
+         word_to_guess = null;
    </script>
 </html>
