@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PicToDraw</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= stylesheet_link_tag    "materialize.css", :type => "text/css", :media => "screen,projection" %>
+  <%= stylesheet_link_tag    "style", :type => "text/css", :media => "screen,projection" %>
+</head>
+<body>
+
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">PicToDraw</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center black-text " >PicToDraw</h1>
+        <div class="row center">
+          <h5 class="header col s12 light" style = "color: black;">You've spent the time in MS Paint. Now's the time to show off!</h5>
+        </div>
+        <div class="row center">
+          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Drawing</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><%= image_tag 'background2.jpg' %></div>
+
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">border_color</i></h2>
+            <h5 class="center">Draw Anywhere</h5>
+
+            <p class="light">Come on in! As long as you've got an internet connection you've got a canvas.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Play With Friends</h5>
+
+            <p class="light">Drawing by yourself is fun, but drawing with your friends is better. Don't have friends? We'll find them for you!</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">timer</i></h2>
+            <h5 class="center">Compete Against Each Other</h5>
+
+            <p class="light">Race against the clock to guess the secret word to earn points. Alternatively draw well enough to have a chance to earn points.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light black-text">We didn't learn Action Cable for you not to use it</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><%= image_tag 'background1.jpg' %></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Contact Us</h4>
+          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light black-text">"Where has this been all my life" --Zack Murillo</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><%= image_tag 'background3.jpg' %></div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About PicToDraw</h5>
+          <p class="grey-text text-lighten-4">PicToDraw was created by Dan Smolinski, Michael Wojtyna, and Zach Henry. PicToDraw is our final project for our Programming Languages Class at Stonehill College. This is an homage to a free game called 'Draw My Thing' that was around in high school. Unfortunately it was taken down years ago. Created using Ruby on Rails</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Dan Smolinski</a></li>
+            <li><a class="white-text" href="#!">Mike Wojtyna</a></li>
+            <li><a class="white-text" href="#!">Zach Henry</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Orleans A Squad
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-2.1.1.min.js' %>
+  <%= javascript_include_tag 'materialize.js' %>
+  <%= javascript_include_tag 'init.js' %>
+
+  </body>
+</html>

@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get '/about',		to: 'pages#about'
   get '/landing', 	to: 'pages#landingPage'
   #get 'pages/home'
-  get '/users/show/id'
+  get '/users/:id', to: 'sessions#new'
+  post '/users/:id', to: 'sessions#create'
   #get 'pages/about'
   post '/destroyLobbyUser', to: 'pages#destroyLobbyUser'
 

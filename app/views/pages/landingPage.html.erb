@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<%= render 'navbar', controller: :pages%>
 <html>
-  <%= render 'navbar', controller: :pages%>
+  
   <body>
+
   <div class = "container">
     <br>
     <% if session[:user_id] == nil%>
