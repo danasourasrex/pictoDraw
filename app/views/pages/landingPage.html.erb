@@ -21,24 +21,24 @@
       <h2><%= link_to 'Login', '/login' %></h2>
     <% end %>
 
-    <h1>Welcome to PicToDraw <%= session[:username]%>! </h1>
+    <h3 class = "center">Welcome to PicToDraw <%= session[:username]%>! </h3>
 
      <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">Play PicToDraw!</span>
-            <p>Join a lobby</p>
+            <p>What are you waiting for, start playing!</p>
           </div>
         <div class="card-action">
-          <a href = "/chatAC" class = "btn">Play</a>
+          <a href = "/chatAC" class = "btn">Play<i class="material-icons right">border_color</i></a>
           <input type="hidden" id="refreshed" value="no">
         </div>
        </div>
       </div>
 
       <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1" style = "height: 187px">
           <div class="card-content white-text">
             <span class="card-title">Stats</span>
             <p>Games won: <%= @user.gameswon%></p>
@@ -48,13 +48,58 @@
       </div>
      </div>
 
+<div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Join the conversation</span>
+            <p>PicToDraw is now on Reddit!</p>
+          </div>
+        <div class="card-action">
+          <a href = "http://www.reddit.com/r/pictodraw" class = "btn">/r/PicToDraw<i class="material-icons right">send</i></a>
+        </div>
+       </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text" style = "height: 187px">
+            <span class="card-title">Announcements</span>
+          </div>
+       </div>
+      </div>
+     </div>
 
 
+<h3 class = "center">Our Favorite Drawings</h3>
   </body>
-  <script>
+</div>
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About PicToDraw</h5>
+          <p class="grey-text text-lighten-4">PicToDraw was created by Dan Smolinski, Michael Wojtyna, and Zach Henry. PicToDraw is our final project for our Programming Languages Class at Stonehill College. This is an homage to a free game called 'Draw My Thing' that was around in high school. Unfortunately it was taken down years ago. Created using Ruby on Rails</p>
 
-  
-    
-  </script>
-</html>
-<br>
+
+        </div>
+        <div class="col l3 s12">
+          
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="https://www.linkedin.com/in/daniel-smolinski-4a92b3138/">Dan Smolinski</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/in/michael-wojtyna-b2302b138/">Mike Wojtyna</a></li>
+            <li><a class="white-text" href="https://www.linkedin.com/in/zachary-henry-5a3576138/">Zach Henry</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Orleans A Squad
+      </div>
+    </div>
+  </footer>
+  </html>
