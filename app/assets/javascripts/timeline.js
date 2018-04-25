@@ -13,6 +13,12 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 		document.getElementById("time_left").innerHTML = "Time left:";
 		document.getElementById("timer").innerHTML = data.time;
 		}
+		else if(data.time == 'reset')
+		{
+			clearInterval(timer);
+			normalRestetTimer();
+
+		}
 		else if(data.time == 0)
 		{
 		document.getElementById("time_left").innerHTML = "Times up!";
