@@ -10,15 +10,9 @@
    </head>
    <%= render 'pages/navbar', controller: :pages%>
    <body class = "teal lighten-4">
-      <h2 class = "center">picToDraw Lobby</h2>
       <div class="row">
-         
          <%= render 'rooms/drawingWindow', controller: :rooms%>
          <%= render 'rooms/chatWindow', controller: :rooms%>
-      </div>
-      <div class = " row teal lighten-4">
-         <%= render 'rooms/drawingControls', controller: :rooms%>
-         <%= render 'rooms/connectedUsers', controller: :rooms%>
       </div>
       
 
@@ -134,8 +128,8 @@
             function drawLine(fromx, fromy, tox, toy, color,lineThick){
              ctx.beginPath();
              ctx.strokeStyle = color
-             ctx.moveTo(fromx-70, fromy-320);
-             ctx.lineTo(tox-70, toy-320);
+             ctx.moveTo(fromx-64, fromy-177);
+             ctx.lineTo(tox-64, toy-177);
              ctx.stroke();
              ctx.lineWidth = lineThick
             }

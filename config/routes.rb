@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get '/addWord', to: 'pages#wordData'
   get '/wordDataCreate', to: 'pages#wordDataCreate'
 
+  #leaderboard
+  get '/leaderboard', to: 'pages#leaderboard'
   
 
   #General catch all

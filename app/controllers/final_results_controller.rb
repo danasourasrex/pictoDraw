@@ -2,8 +2,8 @@ class FinalResultsController < ApplicationController
 
 def index
 
-@connected = ConnectedUser.all
-@sorted = @connected.order('score DESC')
+@connected = ConnectedUser.order('score DESC')
+@sorted = ConnectedUser.order('score DESC')
 @winner = User.find_by(email: @sorted.first.username)
 @winner.gameswon += 1
 @winner.save

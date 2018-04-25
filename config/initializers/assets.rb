@@ -21,6 +21,11 @@ Rails.application.config.assets.precompile += %w( init.js )
 Rails.application.config.assets.precompile += %w( materialize.js )
 Rails.application.config.assets.precompile += %w( loginbackdrop.jpg)
 
+Rails.application.config.assets.precompile += %w( hilight1.png)
+Rails.application.config.assets.precompile += %w( hilight2.png)
+Rails.application.config.assets.precompile += %w( hilight3.png)
+Rails.application.config.assets.precompile += %w( hilight4.png)
+
 
 #Rails.application.config.assets.precompile += %w( drawing.js )
 # Precompile additional assets.

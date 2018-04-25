@@ -15,6 +15,9 @@ class PagesController < ApplicationController
 
   end
 
+  def leaderboard
+    @users = User.order('gameswon DESC')
+  end
   def admin
     
     @user = @user = User.find_by(id: session[:user_id])
