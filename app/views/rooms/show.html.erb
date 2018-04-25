@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class = "teal">
+<head>
+<%= stylesheet_link_tag    "materialize.css", :type => "text/css", :media => "screen,projection" %>
+</head>
+<html >
    <head>
       <% javascript_include_tag 'liveline.js' %>
       <% javascript_include_tag 'timeline.js' %>
       <% javascript_include_tag 'wordline.js' %>
    </head>
    <%= render 'pages/navbar', controller: :pages%>
-   <body class = "teal">
+   <body class = "teal lighten-4">
       <h2 class = "center">picToDraw Lobby</h2>
       <div class="row">
          
          <%= render 'rooms/drawingWindow', controller: :rooms%>
          <%= render 'rooms/chatWindow', controller: :rooms%>
       </div>
-      <div class = "row">
+      <div class = " row teal lighten-4">
          <%= render 'rooms/drawingControls', controller: :rooms%>
          <%= render 'rooms/connectedUsers', controller: :rooms%>
       </div>

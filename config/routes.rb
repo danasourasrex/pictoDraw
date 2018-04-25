@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   post '/updateWordToGuess', to: "rooms#updateWordToGuess"
   post '/finalResults', to: "rooms#finalResults"
   
+  #Admin
+  get '/admin', to: "pages#admin"
+
+  delete '/clearCurrent', to: 'final_results#deleteall'
 
   #messages
   delete '/delAll', to: 'messages#delAll'

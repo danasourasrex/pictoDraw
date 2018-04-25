@@ -9,4 +9,8 @@ def index
 
 end
 
+def deleteall
+	ConnectedUser.destroy_all
+end
+
 end

@@ -1,49 +1,49 @@
 <!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PicToDraw</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= stylesheet_link_tag    "materialize.css", :type => "text/css", :media => "screen,projection" %>
+  <%= stylesheet_link_tag    "style", :type => "text/css", :media => "screen,projection" %>
+</head>
 <%= render 'navbar', controller: :pages%>
 <html>
   
-  <body>
+  <body class = "teal lighten-4">
 
   <div class = "container">
     <br>
     <% if session[:user_id] == nil%>
       <h1>You need to Login</h1>
       <h2><%= link_to 'Login', '/login' %></h2>
-      
-    <%else%>
-    
-    </div>
-
-    
     <% end %>
 
+    <h1>Welcome to PicToDraw <%= session[:username]%>! </h1>
 
      <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">You've Logged in!</span>
-            <p>Session user ID: <%= session[:user_id]%></p>
-            <p>Session Username: <%= session[:username]%></p>
+            <span class="card-title">Play PicToDraw!</span>
+            <p>Join a lobby</p>
           </div>
         <div class="card-action">
-          <%= link_to 'Logout', '/logout' %>
+          <a href = "/chatAC" class = "btn">Play</a>
+          <input type="hidden" id="refreshed" value="no">
         </div>
        </div>
       </div>
-     </div>
 
-     <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">Try out the Chat!</span>
-            <p>Currently Working</p>
+            <span class="card-title">Stats</span>
+            <p>Games won: <%= @user.gameswon%></p>
+            <p>Games played: <%= @user.gamesplayed%></p>
           </div>
-        <div class="card-action">
-          <%= link_to 'Chatroom', '/chatAC' %>
-          <input type="hidden" id="refreshed" value="no">
-        </div>
        </div>
       </div>
      </div>
