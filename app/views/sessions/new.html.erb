@@ -1,21 +1,74 @@
+<!DOCTYPE html>
+<head>
+<%= stylesheet_link_tag    "materialize.css", :type => "text/css", :media => "screen,projection" %>
+</head>
+<html>
+<body class = "teal lighten-4">
+	<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="black-text brand-logo">PicToDraw</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/signup" class = "black-text">Sign Up</a></li>
+        <li><a href="/home" class = "black-text">Home</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="/signup" >Sign Up</a></li>
+        <li><a href="/home">Home</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+	<div class = "container">
 <br>
-<h1>Login</h1>
+
 <br>
-<div>
-<%=form_tag do%>
-<fieldset>
-	<legend>Please Log In</legend>
-	<div>
-	<%= label_tag :email, 'email' %>
-	<%= text_field_tag :email, params[:email] %>
-	<%= label_tag :password, 'password' %>
-	<%= password_field_tag :password, params[:password] %>
-</div>
-<div>
-<%= submit_tag "Login" %>
-</div>
+<br>
+<br><br>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card-panel white">
+      	<h1 class = "center">Login</h1>
+      		<%=form_tag do%>
+			<fieldset>
+			<legend>Please Log In</legend>
+			<div>
+				<div class = "row">
+				<div class="input-field col s12">
+          			<input id="email" name= "email" type="text" class="validate">
+          			<label for="email">Username</label>
+        		</div>
+        		</div>
+
+        		<div class = "row">
+        		<div class="input-field col s12">
+          			<input id="password" name= "password" type="password" class="validate">
+          			<label for="password">Password</label>
+        		</div>
+        		</div>
+
+
+			</div>
+			<div>
+				<%= submit_tag "Login", :class => "btn waves-effect waves-light teal lighten-1"%>
+			</div>
 </fieldset>
 <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
 </div>
-<h2><%= link_to 'Home', '/home' %></h2>
+<div>
 <br>
+</div>
+</body>
+<html>
+
+<style>
+html{
+	height:100%;
+}
+</style>

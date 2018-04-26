@@ -11,6 +11,27 @@
                <label>Enter Guess:</label><br>
                <input type = "text" data-behavior="room_speaker">
             </form>
+
+            <div class = "card-action">
+              <div id = "data">
+               <table id = "connected_users">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Score</th>
+          </tr>
+          <tbody>
+            <% @connected.each do |conn| %>
+          <tr>
+            <td><%=conn.username%></td>
+            <td><%=conn.score%></td>
+          </tr>
+          <% end %>
+       </tbody>
+    </thead>
+  </table>
+</div>
+            </div>
       </div>
    </div>
 </div>

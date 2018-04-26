@@ -1,5 +1,5 @@
 
-   <div class="col s12 m7">
+   <div class="col s12 m7" >
       <div class="card blue-grey darken-1">
          <div class="card-content white-text">
           <div id = "words">
@@ -7,9 +7,27 @@
               </p>
             <p id = "drawing_user" class="card-title center">&nbsp</p>
           </div>
-            <canvas class = " center " style="background-color: ivory"id="paper"></canvas>
+            <canvas class = "center" style="background-color: ivory; padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"id="paper"></canvas>
          </div>
          <div class="card-action">
+            <div class = "center" style = "clear: both">
+               <input class="btn-floating btn-large red" type="button" onclick="colorPicker('red');"></input>
+               <input class="btn-floating btn-large blue" type="button" onclick="colorPicker('blue');"></input> 
+               <input class="btn-floating btn-large pink" type="button" onclick="colorPicker('pink');"></input>
+               <input class="btn-floating btn-large yellow" type="button" onclick="colorPicker('yellow');"></input>  
+               <input class="btn-floating btn-large green" type="button" onclick="colorPicker('green');"></input>
+               <input class="btn-floating btn-large purple" type="button" onclick="colorPicker('purple');"></input>
+               <input class="btn-floating btn-large orange" type="button" onclick="colorPicker('orange');"></input>
+               <input class="btn-floating btn-large brown" type="button" onclick="colorPicker('brown');"></input>
+               <input class="btn-floating btn-large black" type="button" onclick="colorPicker('black');"></input>
+               <input class="btn-floating btn-large white" value="eraser" type="button" onclick="colorPicker('ivory');"></input>
+            </div>
+            <br>
+            <div class = "center" style = "clear: both">
+               <input class="waves-effect waves-light btn" type="button" value= "Small" onclick="sizeSelector('small');"></input>
+               <input class="waves-effect waves-light btn" type="button" value= "Medium" onclick="sizeSelector('medium');"></input> 
+               <input class="waves-effect waves-light btn" type="button" value= "Large" onclick="sizeSelector('large');"></input>
+            </div>
             <div style = "clear: both">
                <h2 style = "float: left" id="time_left">&nbsp</h2>
                <h2 style = "float: left" id = "timer"> </h2>

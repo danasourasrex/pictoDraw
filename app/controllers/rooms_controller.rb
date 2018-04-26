@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
 
   def leave
     puts 'bye'
-
+    
     ConnectedUser.find_by(username: session[:username]).destroy
 
     

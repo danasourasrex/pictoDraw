@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get '/about',		to: 'pages#about'
   get '/landing', 	to: 'pages#landingPage'
   #get 'pages/home'
-  get '/users/show/id'
+  get '/users/:id', to: 'sessions#new'
+  post '/users/:id', to: 'sessions#create'
   #get 'pages/about'
   post '/destroyLobbyUser', to: 'pages#destroyLobbyUser'
 
@@ -33,6 +34,10 @@ Rails.application.routes.draw do
   post '/updateWordToGuess', to: "rooms#updateWordToGuess"
   post '/finalResults', to: "rooms#finalResults"
   
+  #Admin
+  get '/admin', to: "pages#admin"
+
+  delete '/clearCurrent', to: 'final_results#deleteall'
 
   #messages
   delete '/delAll', to: 'messages#delAll'
@@ -41,6 +46,8 @@ Rails.application.routes.draw do
   get '/addWord', to: 'pages#wordData'
   get '/wordDataCreate', to: 'pages#wordDataCreate'
 
+  #leaderboard
+  get '/leaderboard', to: 'pages#leaderboard'
   
 
   #General catch all

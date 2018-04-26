@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   def home
-
   	if session[:user_id] != nil
   		redirect_to "/landing"
       
   	end
+
   end
 
   def wordData
@@ -12,6 +12,22 @@ class PagesController < ApplicationController
   end
 
   def wordDataNew
+
+  end
+
+  def leaderboard
+    @users = User.order('gameswon DESC')
+  end
+  def admin
+    
+    @user = @user = User.find_by(id: session[:user_id])
+    @users = User.all
+    @messages = Message.all
+    @connected = ConnectedUser.all
+    @words = Word.all
+    if @user.email != 'danasourasrex'
+     put @user.email
+    end
 
   end
 
@@ -28,7 +44,7 @@ class PagesController < ApplicationController
     if ConnectedUser.exists?(username: session[:username])
       ConnectedUser.find_by(username: session[:username]).destroy
     end
-
+    @user = User.find_by(id: session[:user_id])
   end
 
 
