@@ -25,6 +25,12 @@
     margin: 10px 0;
 }
 
+#table-scroll {
+  height:85px;
+  overflow:auto;  
+  margin-top:20px;
+}
+
 .swatch_window {
   float: left;
   width: 20px;

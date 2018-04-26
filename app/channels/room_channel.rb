@@ -17,7 +17,7 @@ class RoomChannel < ApplicationCable::Channel
     puts data['score']
     puts data['username']
     @user = ConnectedUser.find_by(username: data['username'])
-    @user.score += 10
+    @user.score += Integer(data['score'])
     puts @user.score
     @user.save
   end

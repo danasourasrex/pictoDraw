@@ -8,8 +8,7 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 		
 		if((data.word != /[^a-zA-Z0-9]/g && data.word != undefined)&&(data.drawer != /[^a-zA-Z0-9]/g && data.drawer != undefined))
 		{
-		console.log(data.word + " in wordline");
-		console.log(data.drawer + " in wordline");
+		
 		word_to_guess = data.word;
 		drawer = data.drawer
 		if(document.getElementById('username').value != data.drawer)

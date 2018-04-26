@@ -16,20 +16,31 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 		else if(data.time == 'reset')
 		{
 			clearInterval(timer);
+			if(round_counter == 10){
+				$.ajax({
+                url: "/finalResults",
+                type: 'POST'
+                });
+
+			}else{
+
+
+			round_counter++;
+			console.log(round_counter);
+			clearInterval(timer);
 			normalRestetTimer();
+		}
 
 		}
 		else if(data.time == 0)
 		{
 		document.getElementById("time_left").innerHTML = "Times up!";
 		document.getElementById("timer").innerHTML = "";
+		startTimerForEveryone()
 		
               
               
-              $.ajax({
-                url: "/finalResults",
-                type: 'POST'
-                });
+              
               
             }
 			
