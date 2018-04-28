@@ -13,10 +13,21 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 		document.getElementById("time_left").innerHTML = "Time left:";
 		document.getElementById("timer").innerHTML = data.time;
 		}
-		else if(data.time == 'reset')
+		else if(data.time == 'false')
 		{
 			clearInterval(timer);
-			if(round_counter == 10){
+			document.getElementById("word").innerHTML = "&nbsp";
+			document.getElementById("drawing_user").innerHTML = "&nbsp";
+			document.getElementById("time_left").innerHTML = "&nbsp";
+			document.getElementById("timer").innerHTML = "&nbsp";
+			game_running = false;
+		}
+		else if(data.time == 'reset')
+		{
+			okayToLeave = false;	
+			round_counter++;
+			if(round_counter == 1){
+				clearInterval(timer);
 				$.ajax({
                 url: "/finalResults",
                 type: 'POST'
@@ -25,7 +36,7 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 			}else{
 
 
-			round_counter++;
+			
 			console.log(round_counter);
 			clearInterval(timer);
 			normalRestetTimer();

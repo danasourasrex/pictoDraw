@@ -28,6 +28,17 @@ class RoomsController < ApplicationController
 
   
   def finalResults
+    @connected = ConnectedUser.order('score DESC')
+    @sorted = ConnectedUser.order('score DESC')
+    @winner = User.find_by(email: @sorted.first.username)
+    @winner.gameswon += 1
+    @winner.save
+    @connected.each do |player|
+      @temp = User.find_by(email: player.username)
+      @temp.gamesplayed += 1
+      @temp.save
+    end
+
     redirect_to '/finalResults'
   end
  

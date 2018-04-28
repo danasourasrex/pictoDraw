@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/home',		to: 'pages#home'
   get '/about',		to: 'pages#about'
   get '/landing', 	to: 'pages#landingPage'
+  post '/landing', to: 'final_results#landing'
   #get 'pages/home'
   get '/users/:id', to: 'sessions#new'
   post '/users/:id', to: 'sessions#create'

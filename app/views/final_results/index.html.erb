@@ -35,8 +35,35 @@
       </div>
       </div>
 </body>
+
 <script>
   document.getElementById("winner").innerHTML = (document.getElementById("connected_users").rows[1].cells[0].innerHTML + " Wins!").italics();
+  
+
+  window.onpopstate = function(event) 
+      {
+       
+        $.ajax({
+                url: "/landing",
+                type: 'GET'
+                });
+      
+     }
+    
+    window.onbeforeunload = function(e)
+     {
+      
+      $.ajax({
+                url: "/landing",
+                type: 'GET'
+                });
+    
+   }
+ 
+              
+              
+  
+        
   
 </script>
 </html>

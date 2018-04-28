@@ -22,16 +22,46 @@
 
       
 
-
-
-      window.onpopstate = function(event) 
+    okayToLeave = true;
+    if(okayToLeave)
+{      window.onpopstate = function(event) 
       {
+        if(document.getElementById('username').value == document.getElementById("connected_users").rows[1].cells[0].innerHTML){
+        time('false');
         $.ajax({
                 url: "/leave",
                 type: 'POST'
                 });
       
-      }
+      }else{
+      
+        $.ajax({
+                url: "/leave",
+                type: 'POST'
+                });
+      
+    }}}
+    if(okayToLeave)
+    {
+    window.onbeforeunload = function(e)
+     {
+      if(document.getElementById('username').value == document.getElementById("connected_users").rows[1].cells[0].innerHTML){
+        time('false');
+      $.ajax({
+                url: "/leave",
+                type: 'POST'
+                });
+    }else{
+      
+        $.ajax({
+                url: "/leave",
+                type: 'POST'
+                });
+      
+    }
+ 
+     }
+   }
       
       
              
@@ -182,6 +212,7 @@
               $('#connected_users td').each(function() {
               cellText.push($(this).html());    
                 });
+              console.log(cellText);
             },  10000);
 
               function getCellTextLength()
@@ -260,11 +291,15 @@
 
             game_running = false;
             setInterval(function(){ 
-
-                 
-                  if(getCellTextLength() > 2 && !game_running)
+                  if(cellText.length < 4 && game_running)
                   {
-
+                    time('false');
+                  }
+                 
+                  if(cellText.length > 2 && !game_running)
+                  {
+                    console.log(document.getElementById('username').value);
+                    console.log(document.getElementById("connected_users").rows[1].cells[0].innerHTML);
                     if(document.getElementById('username').value == document.getElementById("connected_users").rows[1].cells[0].innerHTML){
 
                        $("#startGameNow").prop('disabled', false);
@@ -326,7 +361,7 @@
             
             
             
-            
+         
          word_to_guess = null;
          round_counter = 0;
    </script>

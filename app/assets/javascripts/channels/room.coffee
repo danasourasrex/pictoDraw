@@ -1,13 +1,20 @@
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
 
+  
     
+
   disconnected: ->
+    
+    
     
   update_score: (score, username) ->
     console.log score
     console.log username
     @perform 'update_score', score: score, username: username
+
+ 
+
 
 
   received: (data) ->
