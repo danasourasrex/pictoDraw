@@ -41,10 +41,15 @@ class PagesController < ApplicationController
   def landingPage
     puts 'in here'
     puts session[:username]
+    if session[:user_id] != nil
     if ConnectedUser.exists?(username: session[:username])
       ConnectedUser.find_by(username: session[:username]).destroy
     end
     @user = User.find_by(id: session[:user_id])
+  else 
+    redirect_to "/home"
+  end
+
   end
 
 
