@@ -11,10 +11,6 @@ class PagesController < ApplicationController
   	@words = Word.all
   end
 
-  def wordDataNew
-
-  end
-
   def leaderboard
     @users = User.order('gameswon DESC')
   end
@@ -35,7 +31,7 @@ class PagesController < ApplicationController
 	@message = Word.new
 	@message.assign_attributes({:word => params[:word]})
 	@message.save
-	redirect_to "/addWord"
+  redirect_to '/admin'
   end
 
   def landingPage
