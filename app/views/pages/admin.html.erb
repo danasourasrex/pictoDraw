@@ -99,38 +99,7 @@
         </div>
        </div>
       </div>
-<div class="col s12 m6">
-        <div class="card teal darken-3">
-          <div class="card-content white-text" style = "overflow:scroll; height:400px;">
-            <span class="card-title">Words</span>
-            <table id = "words">
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>ID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @words.each do |word| %>
-      <tr>
-        <td><%= word.word %></td>
-        <td><%= word.id %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-          </div>
-        <div class="card-action">
-<%= form_tag("/wordDataCreate", method: "get") do %>
-  <%= label_tag(:word, "Create Word") %>
-  <%= text_field_tag(:word) %>
-  <%= submit_tag("Submit") %>
-<% end %>
-        </div>
-       </div>
-      </div>
 
 
   </div>

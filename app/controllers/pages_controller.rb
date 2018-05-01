@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     @messages = Message.all
     @connected = ConnectedUser.all
     @words = Word.all
-    if @user.email != 'danasourasrex'
+    if @user.email != 'danasourasrex' || @user.email != 'mike'
      puts @user.email
     end
 
