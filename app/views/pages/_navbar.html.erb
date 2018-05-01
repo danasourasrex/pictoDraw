@@ -4,7 +4,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="/logout" class = "black-text">Log out</a></li>
         <li><a href="/landing" class = "black-text">Home</a></li>
-        <% if session[:username] == 'danasourasrex'%>
+        <% if session[:username] == 'danasourasrex' || session[:username] == 'mike'%>
         <li><a href="/admin" class = "black-text">Admin</a></li>
         <% end %>
       </ul>
