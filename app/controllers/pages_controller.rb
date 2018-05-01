@@ -1,48 +1,51 @@
 class PagesController < ApplicationController
   def home
+    #makes sure that if the user is not logged in they do not see the landing screen
   	if session[:user_id] != nil
   		redirect_to "/landing"
-      
   	end
 
   end
 
   def wordData
+    #Gets all words in database
   	@words = Word.all
   end
 
   def leaderboard
+    #Sort users in decending order of Games won
     @users = User.order('gameswon DESC')
+
   end
   def admin
-    
-    @user = @user = User.find_by(id: session[:user_id])
+    #@user is used to make sure that the user can view the page
+    @user = User.find_by(id: session[:user_id])
+
+    #Gets all users, messages, connected users, and words.
     @users = User.all
     @messages = Message.all
     @connected = ConnectedUser.all
     @words = Word.all
-    if @user.email != 'danasourasrex'
-     puts @user.email
-    end
 
   end
 
   def wordDataCreate
-	@message = Word.new
-	@message.assign_attributes({:word => params[:word]})
-	@message.save
-  redirect_to '/admin'
+     #Creates new word
+	   @message = Word.new
+     #Adds word data
+	   @message.assign_attributes({:word => params[:word]})
+     #saves word
+	   @message.save
+     #refreshes admin page
+     redirect_to '/admin'
   end
 
   def landingPage
-    puts 'in here'
-    puts session[:username]
-    if session[:user_id] != nil
+    #additional code used to disconnect user from lobby
     if ConnectedUser.exists?(username: session[:username])
       ConnectedUser.find_by(username: session[:username]).destroy
-    end
-    @user = User.find_by(id: session[:user_id])
-  else 
+      @user = User.find_by(id: session[:user_id])
+    else 
     redirect_to "/home"
   end
 
