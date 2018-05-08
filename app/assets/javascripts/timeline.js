@@ -26,7 +26,7 @@ App.messages = App.cable.subscriptions.create('RoomChannel',{
 		{
 			okayToLeave = false;	
 			round_counter++;
-			if(round_counter == 1){
+			if(round_counter == 10){
 				clearInterval(timer);
 				$.ajax({
                 url: "/finalResults",

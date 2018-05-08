@@ -25,27 +25,19 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    #@message = Message.new(:username => session[:username])
-    #page[:message].reset
+    #Create message
     @message = Message.new
     @message.assign_attributes({:username => params[:user]})
-    #okay so like params[:message] holds message => "message conent"
-    #so the second thing solves that lmao
     @message.update(message: params[:message][:message])
 
-    #respond_to do |format|
-      if @message.save
-        #format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        #format.json { render :show, status: :created, location: @message }
-      else
-        #format.html { render :new }
-        #format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    #Save Message
+    @message.save
   end
 
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
+    #Method to update message.
     respond_to do |format|
       if @message.update(message_params)
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
@@ -60,6 +52,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    #Used to destroy messages in database
     @message.destroy
     respond_to do |format|
       format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
@@ -68,6 +61,7 @@ class MessagesController < ApplicationController
   end
 
   def delAll
+    #Destroys all messages
     Message.destroy_all
   end
 

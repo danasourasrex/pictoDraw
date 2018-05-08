@@ -41,12 +41,12 @@ class PagesController < ApplicationController
   end
 
   def landingPage
+    #Get user to show stats
+    @user = User.find_by(id: session[:user_id])
     #additional code used to disconnect user from lobby
     if ConnectedUser.exists?(username: session[:username])
       ConnectedUser.find_by(username: session[:username]).destroy
-      @user = User.find_by(id: session[:user_id])
-    else 
-    redirect_to "/home"
+      
   end
 
   end
